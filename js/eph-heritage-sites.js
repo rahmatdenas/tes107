@@ -657,7 +657,7 @@ function generateRecordDetails(qid) {
   if (record.articleTitle) {
     articleHtml = '<div class="article main-text loading"><div class="loader"></div></div>';
   } else {
-    articleHtml = '<div class="article main-text nodata"><p>Masjid ini belum memiliki artikel di Wikipedia.</p></div>';
+    articleHtml = '<div class="article main-text nodata"><p>Masjid ini belum memiliki artikel. <a href="#kontrib" class="sunting-linktambah">Tambahkan!</a></p></div>';
   }
   // ---------------------------------
 
