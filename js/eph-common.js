@@ -23,6 +23,9 @@ var Cluster;
 var BootstrapDataIsLoaded = false;  
 var PrimaryDataIsLoaded   = false;  
 
+// === FITUR BARU: Buku Tamu Pencatat Koneksi Aktif ===
+var activeXhrs = [];
+
 window.addEventListener('load', init);
 
 function init() {
@@ -30,7 +33,11 @@ function init() {
   setupLandingForm();
   window.addEventListener('hashchange', processHashChange);
   Map.on('popupopen', function(e) { displayRecordDetails(e.popup._qid) });
-  window.location.hash = 'landing';
+  
+  window.location.hash = ''; 
+  setTimeout(function() {
+    window.location.hash = 'landing';
+  }, 50);
 }
 
 function setupLandingForm() {
@@ -69,6 +76,12 @@ function setupLandingForm() {
 }
 
 function resetApp() {
+  // === FITUR BARU: Sang Pembunuh Koneksi (XHR Abort) ===
+  if (activeXhrs.length > 0) {
+    activeXhrs.forEach(xhr => xhr.abort());
+    activeXhrs = []; // Kosongkan daftar setelah dibunuh
+  }
+
   Records = {};
   ProvinceIndex = {};
   BootstrapDataIsLoaded = false;
@@ -128,10 +141,22 @@ function initMap() {
 function queryWdqsThenProcess(query, processEachResult, postprocessCallback) {
   let promise = new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest();
+    
+    // Daftarkan koneksi ini ke Buku Tamu
+    activeXhrs.push(xhr);
+
     xhr.onreadystatechange = function() {
       if (xhr.readyState !== xhr.DONE) return;
+
+      // Hapus dari Buku Tamu karena tugasnya sudah selesai
+      let index = activeXhrs.indexOf(xhr);
+      if (index > -1) activeXhrs.splice(index, 1);
+
       if (xhr.status === 200) {
         resolve(JSON.parse(xhr.responseText));
+      } else if (xhr.status === 0) {
+        // Status 0 berarti koneksi sengaja dibunuh (aborted) atau terputus
+        reject('ABORTED');
       } else {
         reject(xhr.status);
       }
@@ -159,12 +184,13 @@ function enableApp() {
 function processHashChange() {
   let fragment = window.location.hash.replace('#', '');
 
-  // === KUNCI PENYELAMAT: Tarik panel ke atas secara otomatis di Mobile ===
   if (typeof window.setMobilePanelExpanded === 'function') {
     window.setMobilePanelExpanded(true);
   }
 
+  // Jika kembali ke Landing, pastikan semua memori dan koneksi dibersihkan
   if (fragment === 'landing') {
+    resetApp(); // Panggil pembersih
     document.title = 'Mulai Eksplorasi – ' + BASE_TITLE;
     displayPanelContent('landing');
   }
