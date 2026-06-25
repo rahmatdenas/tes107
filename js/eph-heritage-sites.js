@@ -99,12 +99,26 @@ function doPreProcessing() {
 
 function populateProvinceTypesData() {
   let inputTxt = document.getElementById('jenis-input').value.trim();
+  let provInput = document.getElementById('provinsi-input').value;
   
-  // === WESEL PERCABANGAN: Cek apakah pencarian mengandung Surat Kabar atau Majalah ===
+  // 1. Tentukan Kueri Dasar (Reguler atau Pers)
   let isPers = inputTxt.includes('Q11032') || inputTxt.includes('Q41298');
   let baseQuery = isPers ? SPARQL_QUERY_0_PERS : SPARQL_QUERY_0;
   
-  let dynamicQuery = baseQuery.replace('<PLACEHOLDER_JENIS>', inputTxt);
+  // 2. Siapkan Suntikan Wilayah
+  let wilayahClause = '';
+  if (provInput === 'all') {
+    // Cari semua Provinsi di Indonesia
+    wilayahClause = '{ SELECT ?provinsi WHERE { ?provinsi wdt:P31 wd:Q5098 . } }';
+  } else {
+    // Cari tingkat administratif di bawah provinsi yang dipilih (Kabupaten/Kota)
+    wilayahClause = `{ SELECT ?provinsi WHERE { ?provinsi wdt:P131 ${provInput} . } }`;
+  }
+  
+  // 3. Gabungkan semuanya
+  let dynamicQuery = baseQuery
+    .replace('<PLACEHOLDER_WILAYAH>', wilayahClause)
+    .replace('<PLACEHOLDER_JENIS>', inputTxt);
 
   return queryWdqsThenProcess(
     dynamicQuery,
