@@ -354,6 +354,7 @@ if (indexList && !isFetching) {
       }
     }
   }
+}
 
 function activateMapMarker(qid) {
   let record = Records[qid];
