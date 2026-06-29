@@ -612,27 +612,32 @@ else if (key === 'lamanResmi') {
     }
   }
 
-  // ==========================================
-  // RENDER BLOK WIKIBOOKS KHUSUS
-  // ==========================================
-  if (urlWikibooks) {
-    // Format UI ini disamakan dengan gaya galeri/arsip
-    html += `
-      <h2 style="margin-top:20px; margin-bottom:10px;">Resep & Panduan</h2>
-      <p class="wikipedia-link" style="margin-bottom: 15px;">
-        <a href="${urlWikibooks}" target="_blank">
-          <img src="img/wikibook_tiny_logo.png" alt="" />
-          <span>Lihat di Wikibuku</span>
-        </a>
-      </p>
-    `;
-  }
-
   let tautanTambah = `<p><a href="${wikiBaseUrl}" target="_blank" class="sunting-linktambah" title="Tambahkan data di Wikidata" style="font-style: italic;">Lengkapi data di Wikidata!</a></p>`;
   html += tautanTambah;
 
   container.insertAdjacentHTML('beforebegin', html);
   container.remove();
+
+if (urlWikibooks) {
+    // Cari wadah arsip (yang sudah pasti berada di luar <ul>)
+    let arsipContainer = record.panelElem.querySelector(`#arsip-container-${qid}`);
+    
+    if (arsipContainer) {
+      let wikibooksHtml = `
+        <div style="margin-top:20px;">
+          <h2 style="margin-bottom:10px;">Resep & Panduan</h2>
+          <p class="wikipedia-link" style="margin-bottom: 0;">
+            <a href="${urlWikibooks}" target="_blank">
+              <img src="img/wikibook_tiny_logo.png" alt="" />
+              <span>Lihat di Wikibuku</span>
+            </a>
+          </p>
+        </div>
+      `;
+      // Suntikkan tepat sebelum galeri gambar/arsip dimulai
+      arsipContainer.insertAdjacentHTML('beforebegin', wikibooksHtml);
+    }
+}
 }
 
 function populateProvinceIndex() {
