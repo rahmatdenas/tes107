@@ -386,7 +386,7 @@ async function fetchWdqsRawWithRetry(query, maxRetry = 3) {
 async function queryWdqsPaginated(queryTemplate, processEachResult, postprocessCallback, chunkSize = 5000) {
   let offset = 0;
   let halaman = 1;
-  let totalDataTerkumpul = 0; // Penampung jumlah data dari semua halaman
+  let totalDataTerkumpul = 0; 
 
   while (true) {
     let pagedQuery = queryTemplate.replace(
@@ -394,13 +394,21 @@ async function queryWdqsPaginated(queryTemplate, processEachResult, postprocessC
       `LIMIT ${chunkSize} OFFSET ${offset}`
     );
 
-    // Kembalikan teks loading standar saat mulai menarik halaman baru (jika sebelumnya muncul pesan error)
     let progressText = document.querySelector('#index-list p');
     if (progressText && progressText.innerHTML.includes('gagal')) {
       progressText.innerHTML = `Melanjutkan penarikan data...`;
     }
 
     let bindings = await fetchWdqsRawWithRetry(pagedQuery);
+    
+    // =========================================================
+    // +++ JINAKKAN BOM WAKTU (Karena data sudah mulai masuk) +++
+    // =========================================================
+    if (halaman === 1 && loadingTimeoutToken) {
+      clearTimeout(loadingTimeoutToken);
+      loadingTimeoutToken = null;
+    }
+    
     bindings.forEach(processEachResult);
 
     let kombinasiUnik = new Set(
