@@ -251,7 +251,7 @@ optgroup option { padding-left: 10px; }
   transition: all 0.2s ease-in-out;
 }
 
-.feat-btn:hover {
+.feat-btn:hover, .disabled {
   background-color: #eaa;
   color: #fff;
 }
