@@ -693,6 +693,16 @@ function displayRecordDetails(qid) {
   let record = Records[qid];
   window.location.hash = `#${qid}`;
   document.title = `${record.indexTitle} – ${BASE_TITLE}`;
+
+  // =========================================================
+  // +++ KUNCI AUTO-RETRY YANG AMAN +++
+  // =========================================================
+  // Jika pengguna mengklik marker ini lagi dan sebelumnya cacat karena offline,
+  // buang memori panel lamanya agar sistem dipaksa memuat ulang dari nol!
+  if (record._gagalOffline) {
+    record.panelElem = undefined;
+    record._gagalOffline = false; // Reset statusnya
+  }
   
   if (PrimaryDataIsLoaded) {
     // KUNCI PERBAIKAN: Bersihkan poligon lama, pasang yang baru
