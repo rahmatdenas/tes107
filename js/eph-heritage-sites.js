@@ -816,24 +816,32 @@ function populateMapAndIndex() {
       );
       record.mapMarker = mapMarker;
       
-  mapMarker.bindPopup(record.title, { 
+mapMarker.bindPopup(record.title, { 
         closeButton: false,
         maxWidth: 200,
-    togglePopup: false
+        togglePopup: false // <--- Wajib agar klik kedua tidak menutup popup
       });
 
       // =======================================================
-      // +++ LOGIKA KLIK KEDUA (KHUSUS MOBILE) +++
+      // +++ LOGIKA ANTI-BOCOR (PENGUKUR WAKTU) +++
       // =======================================================
-mapMarker.on('click', function() {
+      
+      // 1. Catat waktu persis saat popup terbuka
+      mapMarker.on('popupopen', function() {
+        this._waktuBuka = Date.now();
+      });
+
+      // 2. Saat diklik, cek selisih waktunya!
+      mapMarker.on('click', function() {
         
-        // Jika popup-nya SUDAH TERBUKA di peta, berarti ini klik kedua/ketiga/dst
-        if (this.isPopupOpen()) {
+        // Cek: Apakah popup sedang terbuka? DAN 
+        // Apakah terbukanya sudah lebih dari 300 milidetik yang lalu?
+        if (this.isPopupOpen() && this._waktuBuka && (Date.now() - this._waktuBuka > 300)) {
           
-          // 1. Panggil panel detail (sekarang dipindah ke sini)
+          // Panggil panel detail untuk merender data Wikipedia, dll
           displayRecordDetails(qid); 
           
-          // 2. Tarik panel mobile ke atas
+          // Tarik panel mobile ke atas
           if (typeof window.setMobilePanelExpanded === 'function') {
             window.setMobilePanelExpanded(true);
           }
