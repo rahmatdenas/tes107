@@ -908,7 +908,7 @@ function jalankanFilterGPS(selectElem) {
 
       // 2. Buat Lingkaran Merah Transparan (Radius dalam meter)
       userRadiusCircle = L.circle([userLocation.lat, userLocation.lon], {
-        color: '#882222',       // Warna garis tepi (samakan dengan warna tema webmu)
+        color: '#transparent',       // Warna garis tepi (samakan dengan warna tema webmu)
         fillColor: '#882222',   // Warna isi
         fillOpacity: 0.1,       // Sangat transparan
         radius: 10000           // 10.000 meter = 10 km
