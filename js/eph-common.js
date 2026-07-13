@@ -934,11 +934,13 @@ function jalankanFilterGPS(selectElem) {
 }
 
 function batalkanFilterGPS(selectElem) {
+  if (userLocationMarker) Map.removeLayer(userLocationMarker);
+if (userRadiusCircle) Map.removeLayer(userRadiusCircle);
   selectElem.value = 'all';
   currentRegionFilter = 'all';
   userLocation = null;
   let opsi = Array.from(selectElem.options).find(opt => opt.value === 'terdekat');
-  if (opsi) opsi.text = "📍 Sekitar Anda (Radius 10 km)";
+  if (opsi) opsi.text = "Sekitar Anda (10 km)";
   applyIntersectionFilter();
 }
 
