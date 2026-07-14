@@ -38,14 +38,15 @@ var searchDebounceToken = null;
 
 const ikonTetesanAir = L.divIcon({
   className: 'ikon-marker-ringan',
-  // Kode SVG murni pembentuk tetesan air dengan lubang putih di tengah
-  html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="30" height="42">
+  // KUNCI PERBAIKAN: viewBox diperlebar ke -10 (kiri atas) dan ditambah 20px (kanan bawah) 
+  // Ukuran width dan height diubah menjadi 30x40 (Rasio sempurna 3:4)
+  html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 404 532" width="30" height="40" style="overflow: visible;">
            <path fill="#882222" d="M172.3 501.7C27 291 0 269.4 0 192 0 86 86 0 192 0s192 86 192 192c0 77.4-27 99-172.3 309.7-9.5 13.8-29.9 13.8-39.5 0z"/>
            <circle cx="192" cy="192" r="60" fill="#ffffff" />
          </svg>`,
-  iconSize: [30, 42],
-  iconAnchor: [15, 42], // Titik tumpu persis di ujung bawah tetesan air
-  popupAnchor: [0, -40] // Jarak munculnya popup agar tidak menutupi marker
+  iconSize: [30, 40],     // Ukuran disesuaikan
+  iconAnchor: [15, 40],   // Titik tumpu jarum (tengah bawah)
+  popupAnchor: [0, -40]   // Jarak sembulan teks popup agar tidak menabrak jarum
 });
 
 
