@@ -1276,7 +1276,7 @@ let tautanSuntingRingkasan = `<a href="${wikiUrlUtama}" target="_blank" class="s
 let logoWikidataUtama = `<a class="main-wikidata-link" href="https://www.wikidata.org/wiki/${qid}" target="_blank" title="Lihat di Wikidata"><img src="img/wikidata_tiny_logo.png" alt="[Lihat item Wikidata]" /></a>`;
 
 let designationsHtml = `<h2 style="margin-top:10px;display: flex;align-items: flex-start; justify-content: space-between;">
-                          <div><span id="header-text-${qid}" style="margin-right:5px;">Informasi</span>${tautanSuntingRingkasan}</div>
+                          <div><span id="header-text-${qid}" style="margin-right:7px;">Informasi</span>${tautanSuntingRingkasan}</div>
                           ${logoWikidataUtama}
                        </h2>`;
 
