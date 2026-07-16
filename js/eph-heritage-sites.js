@@ -81,19 +81,7 @@ function loadPrimaryData() {
       
       // 2. Tarik gambar dan artikel secara diam-diam di latar belakang
       populateImageAndWikipediaData()
-        .then(() => {
-          if (currentSearchToken !== tiketPencarianIni) return; 
-          
-          // =========================================================
-          // +++ BUKA KUNCI TOMBOL (SKENARIO SUKSES 100%) +++
-          // =========================================================
-          if (btnImg) btnImg.classList.remove('disabled');
-          if (btnArt) btnArt.classList.remove('disabled');
 
-          // Render ulang senyap HANYA untuk memperbarui angka di tombol
-          applyIntersectionFilter(); 
-          Object.values(Records).forEach(r => r.panelElem = undefined);         
-        })
         .catch(error => {
           if (error === 'ABORTED' || currentSearchToken !== tiketPencarianIni) return;
           console.warn("Gagal menarik sebagian data Gambar/Wikipedia, server mungkin kelebihan beban.", error);
