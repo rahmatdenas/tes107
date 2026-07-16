@@ -575,7 +575,7 @@ height: 16px;
   border: 2px solid #fff;
   width: 150px;
   max-height: 800px;
-  transition: max-height 0.3s ease-in-out;
+  transition: max-height 5.3s ease-in-out;
   object-fit: cover;
 }
 
