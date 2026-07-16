@@ -1159,7 +1159,7 @@ window.addEventListener('keyup', function(e) {
 });
 
 // =======================================================
-// SISTEM LIGHTBOX UNTUK GAMBAR NON-UTAMA
+// SISTEM LIGHTBOX UNTUK GAMBAR (DENGAN DUKUNGAN TOMBOL BACK)
 // =======================================================
 window.addEventListener('load', function() {
   // 1. Suntikkan HTML Lightbox ke dalam Body secara otomatis
@@ -1180,51 +1180,64 @@ window.addEventListener('load', function() {
   let imgElem = document.getElementById('lightbox-img');
   let linkElem = document.getElementById('lightbox-link');
 
-// 2. Tangkap klik pada SEMUA gambar di panel (termasuk gambar utama) dan di popup peta
+  // 2. Tangkap klik pada SEMUA gambar di panel dan popup peta
   document.addEventListener('click', function(e) {
-    // Bidik langsung tag <img>-nya
     let targetImg = e.target.closest('#details figure img, .leaflet-popup-content img');
     
     if (targetImg) {
-      e.preventDefault(); // Cegat perilaku bawaan (jangan langsung buka tab baru/scroll top)
+      e.preventDefault(); 
 
       let srcGambar = targetImg.src;
       let linkKeCommons = '';
-
-      // Cek apakah gambar ini dibungkus link <a> (seperti di panel detail)
       let parentLink = targetImg.closest('a');
+      
       if (parentLink) {
         linkKeCommons = parentLink.href;
       } else {
-        // Jika dari Popup peta (tidak ada tag <a>), kita ekstrak manual nama filenya
-        // Memecah "https://commons.../Special:FilePath/Nama_File.jpg?width=250"
         let namaFileRaw = srcGambar.split('Special:FilePath/')[1];
         if (namaFileRaw) {
-          let namaFileBersih = namaFileRaw.split('?')[0]; // Buang parameter '?width=...'
+          let namaFileBersih = namaFileRaw.split('?')[0]; 
           linkKeCommons = 'https://commons.wikimedia.org/wiki/File:' + namaFileBersih;
         }
       }
 
-      // Trik Cerdas: Naikkan resolusi ke 800px untuk versi Lightbox
       if (srcGambar.includes('?width=')) {
         srcGambar = srcGambar.replace(/\?width=\d+/, '?width=500');
       }
 
-      // 3. Masukkan data ke dalam elemen Lightbox
       imgElem.src = srcGambar;
       linkElem.href = linkKeCommons || '#'; 
-
-      // 4. Panggil Lightbox-nya!
       lightbox.classList.add('aktif');
+
+      // +++ KUNCI PERBAIKAN TOMBOL BACK +++
+      // Tinggalkan jejak riwayat palsu agar saat tombol Back ditekan, halaman tidak berpindah
+      window.history.pushState({ dalamLightbox: true }, null, window.location.href);
     }
   });
+
+  // 3. Tutup Lightbox saat area menghitam diklik manual
   backdrop.addEventListener('click', function() {
     lightbox.classList.remove('aktif');
     
-    // Kosongkan gambar sejenak setelah animasi pudar selesai (0.3s) agar tidak nyangkut 
-    // jika nanti membuka gambar lain
+    // Jika ditutup manual, kita harus hapus jejak palsu tadi agar tombol Back tidak ngadat
+    if (window.history.state && window.history.state.dalamLightbox) {
+      window.history.back();
+    }
+
     setTimeout(() => { 
       if (!lightbox.classList.contains('aktif')) imgElem.src = ''; 
     }, 300);
+  });
+
+  // 4. TANGKAP TOMBOL "BACK" DARI HP ATAU BROWSER
+  window.addEventListener('popstate', function(e) {
+    if (lightbox.classList.contains('aktif')) {
+      // Jika Lightbox sedang aktif dan tombol Back ditekan, tutup Lightbox-nya!
+      lightbox.classList.remove('aktif');
+      
+      setTimeout(() => { 
+        if (!lightbox.classList.contains('aktif')) imgElem.src = ''; 
+      }, 300);
+    }
   });
 });
