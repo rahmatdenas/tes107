@@ -492,8 +492,8 @@ async function fetchWdqsRawWithRetry(query, maxRetry = 3, offsetLabel = '') {
 
 // FUNGSI BARU #3: Loop LIMIT/OFFSET, PAKAI JUMLAH ENTITAS UNIK (?SQ) sebagai penanda halaman terakhir
 // (bukan jumlah baris mentah — karena satu entitas bisa punya >1 baris akibat OPTIONAL tanggal ganda)
-Berikut versi queryWdqsPaginated dengan blok itu dihapus (karena sudah terbukti dead code, tidak pernah tereksekusi):
-jsasync function queryWdqsPaginated(queryTemplate, processEachResult, postprocessCallback, chunkSize = 5000) {
+
+async function queryWdqsPaginated(queryTemplate, processEachResult, postprocessCallback, chunkSize = 5000) {
   let offset = 0;
   let halaman = 1;
   let totalDataTerkumpul = 0; 
