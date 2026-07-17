@@ -1002,6 +1002,7 @@ position: absolute;
 
 .eph-dialog-box {
   background: #fff;
+   font-family: "Open Sans", sans-serif;
   border-radius: 6px;
   padding: 20px;
   width: 85%;
@@ -1019,7 +1020,6 @@ position: absolute;
 .eph-dialog-box h3 {
   margin: 0 0 10px;
   color: #611;
-  font-family: "Open Sans", sans-serif;
   font-size: 18px;
 }
 
@@ -1027,7 +1027,6 @@ position: absolute;
   margin: 0 0 20px;
   color: #444;
   font-size: 13.5px;
-  font-family: Merriweather, serif;
   line-height: 1.6;
 }
 
@@ -1041,7 +1040,6 @@ position: absolute;
   flex: 1;
   padding: 10px;
   border-radius: 4px;
-  font-family: "Open Sans", sans-serif;
   font-size: 13px;
   font-weight: bold;
   cursor: pointer;
