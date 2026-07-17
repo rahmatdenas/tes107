@@ -325,9 +325,7 @@ padding: 14px 20px;
   -moz-appearance: none;
 }
 
-select::-moz-focus-inner {
-  outline: none !important;
-}
+select:-moz-focusring { color: transparent; text-shadow: 0 0 0 #000; }
 
 /* MEMBUNUH DELAY 300ms BAWAAN LAYAR SENTUH */
 a, button, select, input, textarea, .feat-btn, .filter-box {
@@ -366,14 +364,19 @@ optgroup option { padding-left: 10px; }
   transition: all 0.2s ease-in-out;
 }
 
-.feat-btn:hover, .disabled {
+.disabled {
   background-color: #eaa;
   color: #fff;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
-.disabled {
-pointer-events: none;
-cursor: not-allowed;
+/* 2. Kunci efek hover HANYA untuk PC / perangkat dengan kursor */
+@media (hover: hover) {
+  .feat-btn:hover {
+    background-color: #eaa;
+    color: #fff;
+  }
 }
 
 .feat-btn.active {
