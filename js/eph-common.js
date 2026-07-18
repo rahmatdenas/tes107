@@ -1008,6 +1008,14 @@ function batalkanFilterGPS(selectElem) {
   // 1. Matikan langsung plugin GPS bawaannya (Titiknya akan hilang otomatis!)
   if (window.TombolGPSMap) window.TombolGPSMap.stop();
 
+  // +++ KUNCI PERBAIKAN: Lepas listener 'once' yang mungkin masih menunggu +++
+  // Supaya kalau user Start -> Cancel -> Start lagi, tidak ada listener lama
+  // yang masih nyangkut dan bisa terpicu ganda (event locationfound bisa datang
+  // terlambat setelah user sudah membatalkan).
+  Map.off('locationfound');
+  Map.off('locationerror');
+  // +++ akhir tambahan +++
+
   // 2. Hapus lingkaran merah buatan kita
   if (userRadiusCircle) Map.removeLayer(userRadiusCircle);
 
