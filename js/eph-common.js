@@ -580,6 +580,7 @@ async function queryWdqsPaginated(queryTemplate, processEachResult, postprocessC
   let offset = 0;
   let halaman = 1;
   let totalDataTerkumpul = 0; 
+  let signal = typeof globalFetchController !== 'undefined' ? globalFetchController.signal : null; // TAMBAHKAN INI
   try {
     while (true) {
       if (window.hentikanPencarian) break;
