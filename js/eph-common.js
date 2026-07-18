@@ -585,8 +585,8 @@ async function queryWdqsPaginated(queryTemplate, processEachResult, postprocessC
       if (window.hentikanPencarian) break;
 
       let pagedQuery = queryTemplate.replace('<PLACEHOLDER_LIMIT_OFFSET>', `LIMIT ${chunkSize} OFFSET ${offset}`);
-let offsetLabel = ` (data ${offset.toLocaleString('id-ID')}–${(offset + chunkSize).toLocaleString('id-ID')})`;
-      let bindings = await fetchWdqsRawWithRetry(pagedQuery, 3, ` (data ${offset}-${offset + chunkSize})`, signal); // TAMBAHKAN signal
+let offsetLabel = ` (data ${offset.toLocaleString('id-ID')}–${(offset + chunkSize).toLocaleString('id-ID')})`
+let bindings = await fetchWdqsRawWithRetry(pagedQuery, 3, offsetLabel, signal); // ganti di sini
       
       if (window.hentikanPencarian) break;
       
