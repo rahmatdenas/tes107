@@ -116,7 +116,9 @@ function loadPrimaryData() {
 
 function doPreProcessing() {
   let anchorElem = document.getElementById('wdqs-link');
-  anchorElem.href = 'https://query.wikidata.org/#' + encodeURIComponent(ABOUT_SPARQL_QUERY);
+  if (anchorElem) {
+    anchorElem.href = 'https://query.wikidata.org/#' + encodeURIComponent(ABOUT_SPARQL_QUERY);
+  }
   processHashChange();
 }
 
@@ -618,7 +620,11 @@ async function populateImageAndWikipediaData() {
         if (btnImg) btnImg.textContent = `Gambar (${persentase}%)`;
         if (btnArt) btnArt.textContent = `Artikel (${persentase}%)`;
 
-        Object.values(Records).forEach(r => r.panelElem = undefined);
+Object.values(Records).forEach(r => {
+  if (r.id !== currentDisplayedQid) {
+    r.panelElem = undefined;
+  }
+});
         if (activeFeatures.has('image') || activeFeatures.has('article')) {
           applyIntersectionFilter(true); 
         }
