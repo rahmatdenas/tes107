@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -19,500 +19,369 @@
 <body>
 <div id="eph-preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 999999; display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease, visibility 0.4s ease;">
     <div class="loader"></div>
-  </div>
+</div>
+
 <section id="panel">
 <header id="branding" role="banner">
   <div id="branding-text">
    <h1>WikiJelajah</h1>
-   <p id="branding-desc">Visualisai Wikidata Interaktif</p>
+   <p id="branding-desc">Visualisasi Wikidata Interaktif</p>
   </div>
   <img src="logobaru.png" alt="Ikon WikiJelajah" id="branding-icon" class="efeklogo">
 </header>
- <section id="landing" class="panel-content" data-display="flex" style="flex-direction: column; padding: 20px 20px 70px 20px; gap: 15px;">
+ 
+  <!-- PANEL BERANDA -->
+  <section id="landing" class="panel-content" data-display="flex" style="flex-direction: column; padding: 20px 20px 70px 20px; gap: 15px;">
     <h2 style="margin: 0;">Mulai Eksplorasi</h2>
-    <label for="provinsi-input" style="font-weight: bold;">Tentukan Wilayah:</label>
-<select id="provinsi-input" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;" onchange="aturTampilanNegara()">
-<option value="wd:Q1823">Aceh</option>
-  <option value="wd:Q3125978">Bali</option>
-  <option value="wd:Q3540">Banten</option>
-  <option value="wd:Q1890">Bengkulu</option>
-  <option value="wd:Q5067">Gorontalo</option>
-  <option value="wd:Q3630">Jakarta</option>
-  <option value="wd:Q2051">Jambi</option>
-  <option value="wd:Q3724">Jawa Barat</option>
-  <option value="wd:Q3557">Jawa Tengah</option>
-  <option value="wd:Q3586">Jawa Timur</option>
-  <option value="wd:Q3916">Kalimantan Barat</option>
-  <option value="wd:Q3906">Kalimantan Selatan</option>
-  <option value="wd:Q3891">Kalimantan Tengah</option>
-  <option value="wd:Q3899">Kalimantan Timur</option>
-  <option value="wd:Q3903">Kalimantan Utara</option>
-  <option value="wd:Q1866">Kepulauan Bangka Belitung</option>
-  <option value="wd:Q2223">Kepulauan Riau</option>
-  <option value="wd:Q2110">Lampung</option>
-  <option value="wd:Q5093">Maluku</option>
-  <option value="wd:Q5094">Maluku Utara</option>
-  <option value="wd:Q5062">Nusa Tenggara Barat</option>
-  <option value="wd:Q5061">Nusa Tenggara Timur</option>
-  <option value="wd:Q5095">Papua</option>
-  <option value="wd:Q5096">Papua Barat</option>
-  <option value="wd:Q115253263">Papua Barat Daya</option>
-  <option value="wd:Q112810104">Papua Pegunungan</option>
-  <option value="wd:Q61439296">Papua Selatan</option>
-  <option value="wd:Q12486766">Papua Tengah</option>
-  <option value="wd:Q2175">Riau</option>
-  <option value="wd:Q5082">Sulawesi Barat</option>
-  <option value="wd:Q5078">Sulawesi Selatan</option>
-  <option value="wd:Q5065">Sulawesi Tengah</option>
-  <option value="wd:Q5075">Sulawesi Tenggara</option>
-  <option value="wd:Q5068">Sulawesi Utara</option>
-  <option value="wd:Q2772">Sumatera Barat</option>
-  <option value="wd:Q2271">Sumatera Selatan</option>
-  <option value="wd:Q2140">Sumatera Utara</option>
-  <option value="wd:Q3741">Yogyakarta</option>
-  <option value="all">Seluruh Indonesia</option>
-  <option value="luar_negeri">Luar Negeri...</option>
-</select>
-    <div id="wadah-negara" style="display: none;">
-      <label for="negara-input" style="font-weight: bold;">Pilih Negara:</label><br>
-      <select id="negara-input" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%;margin-top: 10px;">
-<option disabled style="font-weight: bold; color: black;">Eropa</option>
-<option value="wd:Q222">Albania</option>
-<option value="wd:Q228">Andorra</option>
-<option value="wd:Q40">Austria</option>
-<option value="wd:Q184">Belarus</option>
-<option value="wd:Q55">Belanda</option>
-<option value="wd:Q31">Belgia</option>
-<option value="wd:Q225">Bosnia dan Herzegovina</option>
-<option value="wd:Q145">Britania Raya</option>
-<option value="wd:Q219">Bulgaria</option>
-<option value="wd:Q213">Ceko</option>
-<option value="wd:Q35">Denmark</option>
-<option value="wd:Q191">Estonia</option>
-<option value="wd:Q33">Finlandia</option>
-<option value="wd:Q28">Hungaria</option>
-<option value="wd:Q189">Islandia</option>
-<option value="wd:Q38">Italia</option>
-<option value="wd:Q183">Jerman</option>
-<option value="wd:Q224">Kroasia</option>
-<option value="wd:Q211">Latvia</option>
-<option value="wd:Q347">Liechtenstein</option>
-<option value="wd:Q37">Lituania</option>
-<option value="wd:Q32">Luksemburg</option>
-<option value="wd:Q221">Makedonia Utara</option>
-<option value="wd:Q233">Malta</option>
-<option value="wd:Q217">Moldova</option>
-<option value="wd:Q235">Monako</option>
-<option value="wd:Q236">Montenegro</option>
-<option value="wd:Q20">Norwegia</option>
-<option value="wd:Q36">Polandia</option>
-<option value="wd:Q45">Portugal</option>
-<option value="wd:Q142">Prancis</option>
-<option value="wd:Q27">Republik Irlandia</option>
-<option value="wd:Q218">Rumania</option>
-<option value="wd:Q159">Rusia</option>
-<option value="wd:Q238">San Marino</option>
-<option value="wd:Q403">Serbia</option>
-<option value="wd:Q229">Siprus</option>
-<option value="wd:Q214">Slowakia</option>
-<option value="wd:Q215">Slovenia</option>
-<option value="wd:Q29">Spanyol</option>
-<option value="wd:Q34">Swedia</option>
-<option value="wd:Q39">Swiss</option>
-<option value="wd:Q43">Turki</option>
-<option value="wd:Q212">Ukraina</option>
-<option value="wd:Q237">Vatikan</option>
-<option value="wd:Q41">Yunani</option>
-<option disabled style="font-weight: bold; color: black;">Asia</option>
-<option value="wd:Q889">Afganistan</option>
-<option value="wd:Q851">Arab Saudi</option>
-<option value="wd:Q399">Armenia</option>
-<option value="wd:Q227">Azerbaijan</option>
-<option value="wd:Q398">Bahrain</option>
-<option value="wd:Q902">Bangladesh</option>
-<option value="wd:Q917">Bhutan</option>
-<option value="wd:Q921">Brunei</option>
-<option value="wd:Q928">Filipina</option>
-<option value="wd:Q230">Georgia</option>
-<option value="wd:Q668">India</option>
-<option value="wd:Q252">Indonesia</option>
-<option value="wd:Q796">Irak</option>
-<option value="wd:Q794">Iran</option>
-<option value="wd:Q801">Israel</option>
-<option value="wd:Q17">Jepang</option>
-<option value="wd:Q424">Kamboja</option>
-<option value="wd:Q232">Kazakhstan</option>
-<option value="wd:Q813">Kirgizstan</option>
-<option value="wd:Q884">Korea Selatan</option>
-<option value="wd:Q423">Korea Utara</option>
-<option value="wd:Q817">Kuwait</option>
-<option value="wd:Q819">Laos</option>
-<option value="wd:Q822">Lebanon</option>
-<option value="wd:Q826">Maladewa</option>
-<option value="wd:Q833">Malaysia</option>
-<option value="wd:Q711">Mongolia</option>
-<option value="wd:Q836">Myanmar</option>
-<option value="wd:Q837">Nepal</option>
-<option value="wd:Q842">Oman</option>
-<option value="wd:Q843">Pakistan</option>
-<option value="wd:Q846">Qatar</option>
-<option value="wd:Q334">Singapura</option>
-<option value="wd:Q229">Siprus</option>
-<option value="wd:Q854">Sri Lanka</option>
-<option value="wd:Q858">Suriah</option>
-<option value="wd:Q863">Tajikistan</option>
-<option value="wd:Q869">Thailand</option>
-<option value="wd:Q574">Timor Leste</option>
-<option value="wd:Q148">Tiongkok</option>
-<option value="wd:Q43">Turki</option>
-<option value="wd:Q874">Turkmenistan</option>
-<option value="wd:Q878">Uni Emirat Arab</option>
-<option value="wd:Q265">Uzbekistan</option>
-<option value="wd:Q881">Vietnam</option>
-<option value="wd:Q805">Yaman</option>
-<option value="wd:Q810">Yordania</option>
+    
+    <!-- 1. CASCADING DROPDOWN WILAYAH (ANTARMUKA PENGGUNA) -->
+    <label for="ui-tipe-wilayah" style="font-weight: bold;">Tentukan Wilayah:</label>
+    <select id="ui-tipe-wilayah" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;" onchange="updateTipeWilayah()">
+      <option value="indo">Provinsi di Indonesia</option>
+      <option value="luar">Luar Negeri</option>
+      <option value="all">Seluruh Indonesia (Semua)</option>
+      <option value="custom">Masukkan Wilayah Sendiri...</option>
+    </select>
 
-<option disabled style="font-weight: bold; color: black;">Afrika</option>
-<option value="wd:Q258">Afrika Selatan</option>
-<option value="wd:Q262">Aljazair</option>
-<option value="wd:Q916">Angola</option>
-<option value="wd:Q962">Benin</option>
-<option value="wd:Q963">Botswana</option>
-<option value="wd:Q965">Burkina Faso</option>
-<option value="wd:Q967">Burundi</option>
-<option value="wd:Q657">Chad</option>
-<option value="wd:Q986">Eritrea</option>
-<option value="wd:Q1050">Eswatini</option>
-<option value="wd:Q115">Etiopia</option>
-<option value="wd:Q1000">Gabon</option>
-<option value="wd:Q1005">Gambia</option>
-<option value="wd:Q117">Ghana</option>
-<option value="wd:Q1006">Guinea</option>
-<option value="wd:Q983">Guinea Khatulistiwa</option>
-<option value="wd:Q1007">Guinea-Bissau</option>
-<option value="wd:Q977">Jibuti</option>
-<option value="wd:Q1009">Kamerun</option>
-<option value="wd:Q114">Kenya</option>
-<option value="wd:Q970">Komoro</option>
-<option value="wd:Q1013">Lesotho</option>
-<option value="wd:Q1014">Liberia</option>
-<option value="wd:Q1016">Libya</option>
-<option value="wd:Q1019">Madagaskar</option>
-<option value="wd:Q1020">Malawi</option>
-<option value="wd:Q912">Mali</option>
-<option value="wd:Q1028">Maroko</option>
-<option value="wd:Q1025">Mauritania</option>
-<option value="wd:Q1027">Mauritius</option>
-<option value="wd:Q79">Mesir</option>
-<option value="wd:Q1029">Mozambik</option>
-<option value="wd:Q1030">Namibia</option>
-<option value="wd:Q1032">Niger</option>
-<option value="wd:Q1033">Nigeria</option>
-<option value="wd:Q1008">Pantai Gading</option>
-<option value="wd:Q929">Republik Afrika Tengah</option>
-<option value="wd:Q974">Republik Demokratik Kongo</option>
-<option value="wd:Q971">Republik Kongo</option>
-<option value="wd:Q1037">Rwanda</option>
-<option value="wd:Q6250">Sahara Barat</option>
-<option value="wd:Q1039">Sao Tome dan Principe</option>
-<option value="wd:Q1041">Senegal</option>
-<option value="wd:Q1042">Seychelles</option>
-<option value="wd:Q1044">Sierra Leone</option>
-<option value="wd:Q1045">Somalia</option>
-<option value="wd:Q1049">Sudan</option>
-<option value="wd:Q958">Sudan Selatan</option>
-<option value="wd:Q1011">Tanjung Verde</option>
-<option value="wd:Q924">Tanzania</option>
-<option value="wd:Q945">Togo</option>
-<option value="wd:Q948">Tunisia</option>
-<option value="wd:Q1036">Uganda</option>
-<option value="wd:Q953">Zambia</option>
-<option value="wd:Q954">Zimbabwe</option>
-
-<option disabled style="font-weight: bold; color: black;">Amerika Utara</option>
-<option value="wd:Q30">Amerika Serikat</option>
-<option value="wd:Q781">Antigua dan Barbuda</option>
-<option value="wd:Q778">Bahama</option>
-<option value="wd:Q244">Barbados</option>
-<option value="wd:Q242">Belize</option>
-<option value="wd:Q784">Dominika</option>
-<option value="wd:Q792">El Salvador</option>
-<option value="wd:Q769">Grenada</option>
-<option value="wd:Q774">Guatemala</option>
-<option value="wd:Q790">Haiti</option>
-<option value="wd:Q783">Honduras</option>
-<option value="wd:Q766">Jamaika</option>
-<option value="wd:Q16">Kanada</option>
-<option value="wd:Q800">Kosta Rika</option>
-<option value="wd:Q241">Kuba</option>
-<option value="wd:Q96">Meksiko</option>
-<option value="wd:Q811">Nikaragua</option>
-<option value="wd:Q804">Panama</option>
-<option value="wd:Q786">Republik Dominika</option>
-<option value="wd:Q763">Saint Kitts dan Nevis</option>
-<option value="wd:Q760">Saint Lucia</option>
-<option value="wd:Q757">Saint Vincent dan Grenadines</option>
-<option value="wd:Q754">Trinidad dan Tobago</option>
-
-<option disabled style="font-weight: bold; color: black;">Amerika Selatan</option>
-<option value="wd:Q414">Argentina</option>
-<option value="wd:Q750">Bolivia</option>
-<option value="wd:Q155">Brasil</option>
-<option value="wd:Q298">Chili</option>
-<option value="wd:Q736">Ekuador</option>
-<option value="wd:Q734">Guyana</option>
-<option value="wd:Q739">Kolombia</option>
-<option value="wd:Q733">Paraguay</option>
-<option value="wd:Q419">Peru</option>
-<option value="wd:Q730">Suriname</option>
-<option value="wd:Q77">Uruguay</option>
-<option value="wd:Q717">Venezuela</option>
-
-<option disabled style="font-weight: bold; color: black;">Oseania</option>
-<option value="wd:Q408">Australia</option>
-<option value="wd:Q712">Fiji</option>
-<option value="wd:Q709">Kepulauan Marshall</option>
-<option value="wd:Q685">Kepulauan Solomon</option>
-<option value="wd:Q710">Kiribati</option>
-<option value="wd:Q702">Mikronesia</option>
-<option value="wd:Q697">Nauru</option>
-<option value="wd:Q695">Palau</option>
-<option value="wd:Q691">Papua Nugini</option>
-<option value="wd:Q683">Samoa</option>
-<option value="wd:Q664">Selandia Baru</option>
-<option value="wd:Q678">Tonga</option>
-<option value="wd:Q672">Tuvalu</option>
-<option value="wd:Q686">Vanuatu</option>
+    <!-- Sub-Dropdown: Provinsi Indonesia -->
+    <div id="ui-wadah-indo" style="display: block;">
+      <select id="ui-pilih-indo" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%;" onchange="syncKeSistemInti()">
+        <option value="wd:Q1823">Aceh</option>
+        <option value="wd:Q3125978">Bali</option>
+        <option value="wd:Q3540">Banten</option>
+        <option value="wd:Q1890">Bengkulu</option>
+        <option value="wd:Q5067">Gorontalo</option>
+        <option value="wd:Q3630">Jakarta</option>
+        <option value="wd:Q2051">Jambi</option>
+        <option value="wd:Q3724">Jawa Barat</option>
+        <option value="wd:Q3557">Jawa Tengah</option>
+        <option value="wd:Q3586">Jawa Timur</option>
+        <option value="wd:Q3916">Kalimantan Barat</option>
+        <option value="wd:Q3906">Kalimantan Selatan</option>
+        <option value="wd:Q3891">Kalimantan Tengah</option>
+        <option value="wd:Q3899">Kalimantan Timur</option>
+        <option value="wd:Q3903">Kalimantan Utara</option>
+        <option value="wd:Q1866">Kepulauan Bangka Belitung</option>
+        <option value="wd:Q2223">Kepulauan Riau</option>
+        <option value="wd:Q2110">Lampung</option>
+        <option value="wd:Q5093">Maluku</option>
+        <option value="wd:Q5094">Maluku Utara</option>
+        <option value="wd:Q5062">Nusa Tenggara Barat</option>
+        <option value="wd:Q5061">Nusa Tenggara Timur</option>
+        <option value="wd:Q5095">Papua</option>
+        <option value="wd:Q5096">Papua Barat</option>
+        <option value="wd:Q115253263">Papua Barat Daya</option>
+        <option value="wd:Q112810104">Papua Pegunungan</option>
+        <option value="wd:Q61439296">Papua Selatan</option>
+        <option value="wd:Q12486766">Papua Tengah</option>
+        <option value="wd:Q2175">Riau</option>
+        <option value="wd:Q5082">Sulawesi Barat</option>
+        <option value="wd:Q5078">Sulawesi Selatan</option>
+        <option value="wd:Q5065">Sulawesi Tengah</option>
+        <option value="wd:Q5075">Sulawesi Tenggara</option>
+        <option value="wd:Q5068">Sulawesi Utara</option>
+        <option value="wd:Q2772">Sumatera Barat</option>
+        <option value="wd:Q2271">Sumatera Selatan</option>
+        <option value="wd:Q2140">Sumatera Utara</option>
+        <option value="wd:Q3741">Yogyakarta</option>
       </select>
     </div>
-    
-    <label for="jenis-dropdown" style="font-weight: bold;">Pilih Kategori Data:</label>
-    
-<select id="jenis-dropdown" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+
+    <!-- Sub-Dropdown: Benua -->
+    <div id="ui-wadah-benua" style="display: none;">
+      <select id="ui-pilih-benua" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%;" onchange="updateNegara()">
+        <option value="Eropa">Eropa</option>
+        <option value="Asia">Asia</option>
+        <option value="Afrika">Afrika</option>
+        <option value="Amerika">Amerika (Utara & Selatan)</option>
+        <option value="Oseania">Oseania</option>
+      </select>
+    </div>
+
+    <!-- Sub-Dropdown: Negara (ID langsung menggunakan negara-input agar bisa dibaca JS3) -->
+    <div id="ui-wadah-negara" style="display: none;">
+      <select id="negara-input" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%; margin-top: 5px;" onchange="syncKeSistemInti()">
+        <!-- Akan diisi otomatis oleh JavaScript -->
+      </select>
+    </div>
+
+    <!-- Sub-Input: Kustom Q-ID Wilayah -->
+    <div id="ui-wadah-custom" style="display: none;">
+      <input type="text" id="ui-input-custom" placeholder="Contoh: wd:Qxxx" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; width: 100%; box-sizing: border-box;" oninput="syncKeSistemInti()">
+    </div>
+
+    <!-- ELEMEN PROXY TERSEMBUNYI (Menyuplai Data ke JS 1 dan JS 3) -->
+    <select id="provinsi-input" style="display: none;"></select>
+
+    <!-- 2. DROPDOWN KATEGORI (Terhubung ke Kamus Konfigurasi JS 2) -->
+    <label for="jenis-dropdown" style="font-weight: bold; margin-top: 5px;">Pilih Kategori Data:</label>
+    <select id="jenis-dropdown" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
       <option disabled selected style="font-weight: bold; color: black;" value="wd:">Contoh</option>
-      <option value="wd:Q3199141 wd:Q3191695">Kabupaten & kota</option>
-      <option value="wd:Q5" data-lokasi="P19" data-tahun="P569">Tempat lahir tokoh</option>
+      
+      <option value="wd:Q3199141 wd:Q3191695" data-klaster="wilayah_admin">Kabupaten & kota</option>
+      <option value="wd:Q5" data-klaster="custom">Tempat lahir tokoh</option>
 
-      <option disabled style="font-weight: bold; color: black;">Budaya</option>
-      <option value="wd:Q34770" data-kategori="alam" data-lokasi="P2341">Bahasa</option>
-      <option value="wd:Q36192" data-kategori="alam" data-lokasi="P276">Budaya rakyat</option>
-      <option value="wd:Q19861951 wd:Q746549 wd:Q2095 wd:Q8195619" data-kategori="alam" data-lokasi="P276">Hidangan</option>
-      <option value="wd:Q11460 wd:Q3172759 wd:Q28823" data-kategori="alam" data-lokasi="P276">Pakaian</option>
-      <option value="wd:Q189819 wd:Q2627975" data-kategori="alam" data-lokasi="P276">Ritual dan upacara</option>
-      <option value="wd:Q107357104 wd:Q184485" data-kategori="alam" data-lokasi="P276">Tari dan pertunjukan</option>
+      <option disabled style="font-weight: bold; color: black;">Budaya & Karya</option>
+      <option value="wd:Q34770" data-klaster="karya_naskah">Bahasa</option>
+      <option value="wd:Q36192" data-klaster="karya_naskah">Budaya rakyat</option>
+      <option value="wd:Q19861951 wd:Q746549 wd:Q2095 wd:Q8195619" data-klaster="karya_naskah">Hidangan</option>
+      <option value="wd:Q11460 wd:Q3172759 wd:Q28823" data-klaster="karya_naskah">Pakaian</option>
+      <option value="wd:Q189819 wd:Q2627975" data-klaster="karya_naskah">Ritual dan upacara</option>
+      <option value="wd:Q107357104 wd:Q184485" data-klaster="karya_naskah">Tari dan pertunjukan</option>
+      <option value="wd:Q3305213" data-klaster="karya_naskah">Lukisan</option>
+      <option value="wd:Q1641020" data-klaster="karya_naskah">Lontar</option>
+      <option value="wd:Q87167" data-klaster="karya_naskah">Naskah</option>
+      <option value="wd:Q47461344 wd:Q7725634" data-klaster="karya_naskah">Publikasi</option>
+      <option value="wd:Q7725634" data-klaster="karya_naskah">Latar karya sastra</option>
+      <option value="wd:Q220659 wd:Q860861 wd:Q193475" data-klaster="karya_naskah">Artefak</option>
+      <option value="wd:Q178743 wd:Q860861" data-klaster="karya_naskah">Prasasti</option>
+      <option value="wd:Q839954 wd:Q193475" data-klaster="karya_naskah">Situs arkeologi lainnya</option>
       
-      <option disabled style="font-weight: bold; color: black;">Tempat ibadah</option>
-      <option value="wd:Q32815 wd:Q56235676 wd:Q56235673 wd:Q1454820">Masjid</option>
-      <option value="wd:Q16970 wd:Q2977 wd:Q56242215">Gereja & katedral</option>
-      <option value="wd:Q44539 wd:Q2736554 wd:Q842402 wd:Q3124902">Kuil & candi</option>
-      <option value="wd:Q5393308 wd:Q2680845">Vihara & kelenteng</option>
+      <option disabled style="font-weight: bold; color: black;">Bangunan & Arsitektur</option>
+      <option value="wd:Q32815 wd:Q56235676 wd:Q56235673 wd:Q1454820" data-klaster="bangunan_umum">Masjid</option>
+      <option value="wd:Q16970 wd:Q2977 wd:Q56242215" data-klaster="bangunan_umum">Gereja & katedral</option>
+      <option value="wd:Q44539 wd:Q2736554 wd:Q842402 wd:Q3124902" data-klaster="bangunan_umum">Kuil & candi</option>
+      <option value="wd:Q5393308 wd:Q2680845" data-klaster="bangunan_umum">Vihara & kelenteng</option>
+      <option value="wd:Q57821 wd:Q1785071 wd:Q91122" data-klaster="bangunan_umum">Benteng dan bunker</option>
+      <option value="wd:Q4989906 wd:Q321053 wd:Q179700 wd:Q170980 wd:Q5003624" data-klaster="bangunan_umum">Monumen, patung, & memorial</option>
+      <option value="wd:Q137894610 wd:Q35112127 wd:Q4246737 wd:Q19860854 wd:Q109607" data-klaster="bangunan_umum">Bangunan bersejarah lainnya</option>
+      <option value="wd:Q41176 wd:Q811979" data-klaster="bangunan_umum">Bangunan secara umum / struktur arsitektur</option>
+      <option value="wd:Q27686 wd:Q875157" data-klaster="bangunan_umum">Hotel dan resor</option>
+      <option value="wd:Q16560 wd:Q481289" data-klaster="bangunan_umum">Istana</option>
+      <option value="wd:Q330284 wd:Q11315" data-klaster="bangunan_umum">Pasar dan mall</option>
+      <option value="wd:Q7075" data-klaster="bangunan_umum">Perpustakaan</option>
+      <option value="wd:Q16917" data-klaster="bangunan_umum">Rumah sakit</option>
+      <option value="wd:Q483110 wd:Q2310214" data-klaster="bangunan_umum">Stadion & lapangan olahraga</option>
+      <option value="wd:Q3918 wd:Q38723" data-klaster="bangunan_umum">Universitas & kampus</option>
+      <option value="wd:Q11032 wd:Q41298" data-klaster="bangunan_umum">Media massa</option>
+      <option value="wd:Q33506" data-klaster="bangunan_umum">Museum</option>
+      <option value="wd:Q1248784" data-klaster="bangunan_umum">Bandar udara</option>
+      <option value="wd:Q44782" data-klaster="bangunan_umum">Pelabuhan</option>
+      <option value="wd:Q55488" data-klaster="bangunan_umum">Stasiun kereta api</option>
+      <option value="wd:Q494829" data-klaster="bangunan_umum">Terminal bus</option>
+      <option value="wd:Q3947" data-klaster="bangunan_umum">Rumah</option>
+      <option value="wd:Q875016" data-klaster="bangunan_umum">Rumah teras</option>
+      <option value="wd:Q5783996 wd:Q654772" data-klaster="bangunan_umum">Penginapan dan losmen</option>
+      <option value="wd:Q108325" data-klaster="bangunan_umum">Kapel</option>
+      <option value="wd:Q718966" data-klaster="bangunan_umum">Rumah dokter</option>
+      <option value="wd:Q42948" data-klaster="bangunan_umum">Dinding</option>
+      <option value="wd:Q4671329" data-klaster="bangunan_umum">Academy school</option>
+      <option value="wd:Q575759" data-klaster="bangunan_umum">War memorial</option>
+      <option value="wd:Q41253" data-klaster="bangunan_umum">Bioskop</option>
+      <option value="wd:Q24354" data-klaster="bangunan_umum">Teater</option>
+      <option value="wd:Q277760" data-klaster="bangunan_umum">Seketeng</option>
+      <option value="wd:Q12280 wd:Q537127" data-klaster="bangunan_umum">Jembatan</option>
+      <option value="wd:Q28564" data-klaster="bangunan_umum">Perpustakaan umum</option>
+      <option value="wd:Q1244442" data-klaster="bangunan_umum">Bangunan sekolah</option>
+      <option value="wd:Q53060" data-klaster="bangunan_umum">Gerbang</option>
+      <option value="wd:Q23413" data-klaster="bangunan_umum">Kastel</option>
+      <option value="wd:Q3950" data-klaster="bangunan_umum">Vila</option>
+      <option value="wd:Q1021645" data-klaster="bangunan_umum">Bangunan Perkantoran</option>
+      <option value="wd:Q1088552" data-klaster="bangunan_umum">Bangunan gereja Katolik</option>
+      <option value="wd:Q16884952 wd:Q879050" data-klaster="bangunan_umum">Country house</option>
+      <option value="wd:Q25550691" data-klaster="bangunan_umum">Balai kota</option>
+      <option value="wd:Q928830" data-klaster="bangunan_umum">Stasiun metro</option>
+      <option value="wd:Q11670533" data-klaster="bangunan_umum">Stasiun layang</option>
+      <option value="wd:Q22808403" data-klaster="bangunan_umum">Stasiun bawah tanah</option>
       
-      <option value="wd:Q11032 wd:Q41298" data-lokasi="P291" data-tahun="P577">Media massa</option>
-      <option value="wd:Q33506">Museum</option>
+      <option disabled style="font-weight: bold; color: black;">Bentang Alam</option>  
+      <option value="wd:Q34038" data-klaster="bentang_alam">Air terjun</option>
+      <option value="wd:Q179049" data-klaster="bentang_alam">Cagar alam</option>
+      <option value="wd:Q23397 wd:Q204324 wd:Q159954" data-klaster="bentang_alam">Danau & kaldera</option>   
+      <option value="wd:Q35509" data-klaster="bentang_alam">Gua</option>
+      <option value="wd:Q8502" data-klaster="bentang_alam">Gunung</option>
+      <option value="wd:Q40080" data-klaster="bentang_alam">Pantai</option>
+      <option value="wd:Q23442" data-klaster="bentang_alam">Pulau</option>
+      <option value="wd:Q131681 wd:Q12323" data-klaster="bentang_alam">Waduk, bendungan, & embung</option>
+      <option value="wd:Q43501 wd:Q167346" data-klaster="bentang_alam">Kebun binatang & tanaman</option>
+      <option value="wd:Q22746 wd:Q174782" data-klaster="bentang_alam">Ruang terbuka hijau</option>
+      <option value="wd:Q570116" data-klaster="bentang_alam">Objek wisata</option>
+      <option value="wd:Q47521" data-klaster="bentang_alam">Aliran air</option>
+      <option value="wd:Q207326 wd:Q740445" data-klaster="bentang_alam">Puncak dan rabung</option>
+      <option value="wd:Q22698" data-klaster="bentang_alam">Taman</option>
+      <option value="wd:Q185113" data-klaster="bentang_alam">Tanjung</option>
+      <option value="wd:Q7963015" data-klaster="bentang_alam">Walled garden</option>
       
-      <option disabled style="font-weight: bold; color: black;">Peninggalan sejarah</option>
-      <option value="wd:Q220659 wd:Q860861 wd:Q193475" data-lokasi="P276">Artefak</option>
-      <option value="wd:Q57821 wd:Q1785071 wd:Q91122">Benteng dan bunker</option>
-      <option value="wd:Q178743 wd:Q860861">Prasasti</option>
-      <option value="wd:Q839954 wd:Q193475">Situs arkeologi lainnya</option>
-      <option value="wd:Q4989906 wd:Q321053 wd:Q179700 wd:Q170980 wd:Q5003624">Monumen, patung, & memorial</option>
-      <option value="wd:Q137894610 wd:Q35112127 wd:Q4246737 wd:Q19860854 wd:Q109607">Bangunan bersejarah lainnya</option>
-      <option value="wd:Q41176 wd:Q811979">Bangunan secara umum dan struktur arsitektur</option>
-      
-      <option disabled style="font-weight: bold; color: black;">Bangunan/tempat</option>
-      <option value="wd:Q27686 wd:Q875157">Hotel dan resor</option>
-      <option value="wd:Q16560 wd:Q481289">Istana</option>
-      <option value="wd:Q43501 wd:Q167346" data-kategori="alam">Kebun binatang & tanaman</option>
-      <option value="wd:Q570116" data-kategori="alam">Objek wisata</option>
-      <option value="wd:Q330284 wd:Q11315">Pasar dan mall</option>
-      <option value="wd:Q7075">Perpustakaan</option>
-      <option value="wd:Q22746 wd:Q174782" data-kategori="alam">Ruang terbuka hijau</option>
-      <option value="wd:Q16917">Rumah sakit</option>
-      <option value="wd:Q483110 wd:Q2310214">Stadion & lapangan olahraga</option>
-      <option value="wd:Q3918 wd:Q38723">Universitas & kampus</option>
-      
-      <option disabled style="font-weight: bold; color: black;">Transportasi</option>
-      <option value="wd:Q1248784">Bandar udara</option>
-      <option value="wd:Q44782">Pelabuhan</option>
-      <option value="wd:Q55488">Stasiun kereta api</option>
-      <option value="wd:Q494829">Terminal bus</option>
-      
-      <option disabled style="font-weight: bold; color: black;">Bentang alam</option>  
-      <option value="wd:Q34038" data-kategori="alam">Air terjun</option>
-      <option value="wd:Q179049" data-kategori="alam">Cagar alam</option>
-      <option value="wd:Q23397 wd:Q204324 wd:Q159954" data-kategori="alam">Danau & kaldera</option>   
-      <option value="wd:Q35509" data-kategori="alam">Gua</option>
-      <option value="wd:Q8502" data-kategori="alam">Gunung</option>
-      <option value="wd:Q40080" data-kategori="alam">Pantai</option>
-      <option value="wd:Q23442" data-kategori="alam">Pulau</option>
-      <option value="wd:Q131681 wd:Q12323" data-kategori="alam">Waduk, bendungan, & embung</option>
-      
-      <option disabled style="font-weight: bold; color: black;">Objek lainnya (data masih sedikit)</option>
-      <option value="wd:Q7944 wd:Q8070" data-lokasi="P276" data-tahun="P585">Gempa bumi dan tsunami</option>
-      <option value="wd:Q8065 wd:Q3839081 wd:Q7692360 wd:Q8068" data-lokasi="P276" data-tahun="P585">Bencana lainnya</option>
-      <option value="wd:Q1323212 wd:Q3199915 wd:Q198 wd:Q645883 wd:Q831663 wd:Q180684 wd:Q178561 wd:Q1261499" data-lokasi="P276" data-tahun="P585">Perang & konflik</option>
-      <option value="wd:Q1190554" data-lokasi="P276" data-tahun="P585">Peristiwa lainnya</option>
-      <option value="wd:Q7725634" data-lokasi="P840" data-tahun="P577">Latar karya sastra</option>
-      <option value="wd:Q3305213" data-lokasi="P276" data-tahun="P571">Lukisan</option>
-      <option value="wd:Q1641020" data-lokasi="P276">Lontar</option>
-      <option value="wd:Q87167" data-lokasi="P276">Naskah</option>
-      <option value="wd:Q47461344 wd:Q7725634" data-lokasi="P291" data-tahun="P577">Publikasi</option>
-      <option value="apapun">Semua Jenis Objek</option>
-
-      <option value="wd:Q3947">Rumah</option>
-      <option value="wd:Q875016">Rumah teras</option>
-      <option value="wd:Q5783996 wd:Q654772">Penginapan dan losmen</option>
-      <option value="wd:Q852190">Bangkai kapal</option>
-      <option value="wd:Q11446">Kapal</option>
-      <option value="wd:Q1115575">Paroki sipil</option>
-      <option value="wd:Q108325">Kapel</option>
-      <option value="wd:Q10145">Pal</option>
-      <option value="wd:Q718966">Rumah dokter</option>
-      <option value="wd:Q42948">Dinding</option>
-      <option value="wd:Q4671329">academy school (Inggris)</option>
-      <option value="wd:Q5084">Kampung</option>
-      <option value="wd:Q575759">war memorial</option>
-      <option value="wd:Q41253">Bioskop</option>
-      <option value="wd:Q24354">teater</option>
-      <option value="wd:Q277760">Seketeng</option>
-      <option value="wd:Q12280 wd:Q537127">Jembatan dan road bridge</option>
-      <option value="wd:Q79007">nama jalan</option>
-      <option value="wd:Q47521" data-kategori="alam">aliran</option>
-      <option value="wd:Q28564">perpustakaan umum</option>
-      <option value="wd:Q1244442">Bangunan sekolah</option>
-      <option value="wd:Q207326 wd:Q740445" data-kategori="alam">Puncak dan rabung</option>
-      <option value="wd:Q53060">Gerbang</option>
-      <option value="wd:Q203443">Batu nisan</option>
-      <option value="wd:Q381885">Pusara</option>
-      <option value="wd:Q23413">kastel</option>
-      <option value="wd:Q19833736">chest tomb Inggris</option>
-      <option value="wd:Q12859788">kapal uap</option>
-      <option value="wd:Q3950">vila</option>
-      <option value="wd:Q22698" data-kategori="alam">taman</option>
-      <option value="wd:Q1021645">Bangunan Perkantoran</option>
-      <option value="wd:Q185113" data-kategori="alam">tanjung</option>
-      <option value="wd:Q1088552">bangunan gereja Katolik</option>
-      <option value="wd:Q7963015">walled garden Inggris</option>
-      <option value="wd:Q92086">promontory fort Inggris</option>
-      <option value="wd:Q16884952 wd:Q879050">country house dan rumah bangsawan</option>
-      <option value="wd:Q25550691">Balai kota</option>
-      <option value="wd:Q10300916">cultural heritage of China</option>
-      <option value="wd:Q928830">stasiun kereta api metro</option>
-      <option value="wd:Q11670533">stasiun layang</option>
-      <option value="wd:Q22808403">stasiun bawah tanah</option>
-      
-      <option value="custom">Ketik Q-ID Sendiri...</option>
+      <option disabled style="font-weight: bold; color: black;">Objek Lainnya / Custom</option>
+      <option value="wd:Q7944 wd:Q8070" data-klaster="custom">Gempa bumi dan tsunami</option>
+      <option value="wd:Q8065 wd:Q3839081 wd:Q7692360 wd:Q8068" data-klaster="custom">Bencana lainnya</option>
+      <option value="wd:Q1323212 wd:Q3199915 wd:Q198 wd:Q645883 wd:Q831663 wd:Q180684 wd:Q178561 wd:Q1261499" data-klaster="custom">Perang & konflik</option>
+      <option value="wd:Q1190554" data-klaster="custom">Peristiwa lainnya</option>
+      <option value="wd:Q1115575" data-klaster="wilayah_admin">Paroki sipil</option>
+      <option value="wd:Q5084" data-klaster="wilayah_admin">Kampung</option>
+      <option value="wd:Q852190" data-klaster="custom">Bangkai kapal</option>
+      <option value="wd:Q11446" data-klaster="custom">Kapal</option>
+      <option value="wd:Q10145" data-klaster="custom">Pal</option>
+      <option value="wd:Q79007" data-klaster="custom">Nama jalan</option>
+      <option value="wd:Q203443" data-klaster="custom">Batu nisan</option>
+      <option value="wd:Q381885" data-klaster="custom">Pusara</option>
+      <option value="wd:Q19833736" data-klaster="custom">Chest tomb</option>
+      <option value="wd:Q12859788" data-klaster="custom">Kapal uap</option>
+      <option value="wd:Q92086" data-klaster="custom">Promontory fort</option>
+      <option value="wd:Q10300916" data-klaster="custom">Cultural heritage of China</option>
+      <option value="apapun" data-klaster="custom">Semua Jenis Objek</option>
+      <option value="custom" data-klaster="custom">Ketik Q-ID Sendiri...</option>
     </select>
-    <label for="jenis-input" style="font-weight: bold;">Q-ID (terisi otomatis sesuai kategori):</label>
+    
+    <label for="jenis-input" style="font-weight: bold;">Q-ID (Otomatis):</label>
     <input type="text" id="jenis-input" value="wd:Q3199141 wd:Q3191695" readonly style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; background-color: #f5f5f5;">
 
     <button id="btn-mulai" style="margin-top: 10px; padding: 12px; background-color: #7b0d0c; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; font-size: 16px;font-family: 'Open Sans', sans-serif;">Tarik Data</button>
   </section>
 
-<div id="loading" class="panel-content" data-display="flex">
+  <!-- SCRIPT LOGIKA ANTARMUKA WILAYAH BERTINGKAT -->
+  <script>
+    const dataNegara = {
+      "Eropa": [
+        {val:"wd:Q222",txt:"Albania"},{val:"wd:Q228",txt:"Andorra"},{val:"wd:Q40",txt:"Austria"},{val:"wd:Q184",txt:"Belarus"},{val:"wd:Q55",txt:"Belanda"},{val:"wd:Q31",txt:"Belgia"},{val:"wd:Q225",txt:"Bosnia dan Herzegovina"},{val:"wd:Q145",txt:"Britania Raya"},{val:"wd:Q219",txt:"Bulgaria"},{val:"wd:Q213",txt:"Ceko"},{val:"wd:Q35",txt:"Denmark"},{val:"wd:Q191",txt:"Estonia"},{val:"wd:Q33",txt:"Finlandia"},{val:"wd:Q28",txt:"Hungaria"},{val:"wd:Q189",txt:"Islandia"},{val:"wd:Q38",txt:"Italia"},{val:"wd:Q183",txt:"Jerman"},{val:"wd:Q224",txt:"Kroasia"},{val:"wd:Q211",txt:"Latvia"},{val:"wd:Q347",txt:"Liechtenstein"},{val:"wd:Q37",txt:"Lituania"},{val:"wd:Q32",txt:"Luksemburg"},{val:"wd:Q221",txt:"Makedonia Utara"},{val:"wd:Q233",txt:"Malta"},{val:"wd:Q217",txt:"Moldova"},{val:"wd:Q235",txt:"Monako"},{val:"wd:Q236",txt:"Montenegro"},{val:"wd:Q20",txt:"Norwegia"},{val:"wd:Q36",txt:"Polandia"},{val:"wd:Q45",txt:"Portugal"},{val:"wd:Q142",txt:"Prancis"},{val:"wd:Q27",txt:"Republik Irlandia"},{val:"wd:Q218",txt:"Rumania"},{val:"wd:Q159",txt:"Rusia"},{val:"wd:Q238",txt:"San Marino"},{val:"wd:Q403",txt:"Serbia"},{val:"wd:Q229",txt:"Siprus"},{val:"wd:Q214",txt:"Slowakia"},{val:"wd:Q215",txt:"Slovenia"},{val:"wd:Q29",txt:"Spanyol"},{val:"wd:Q34",txt:"Swedia"},{val:"wd:Q39",txt:"Swiss"},{val:"wd:Q43",txt:"Turki"},{val:"wd:Q212",txt:"Ukraina"},{val:"wd:Q237",txt:"Vatikan"},{val:"wd:Q41",txt:"Yunani"}
+      ],
+      "Asia": [
+        {val:"wd:Q889",txt:"Afganistan"},{val:"wd:Q851",txt:"Arab Saudi"},{val:"wd:Q399",txt:"Armenia"},{val:"wd:Q227",txt:"Azerbaijan"},{val:"wd:Q398",txt:"Bahrain"},{val:"wd:Q902",txt:"Bangladesh"},{val:"wd:Q917",txt:"Bhutan"},{val:"wd:Q921",txt:"Brunei"},{val:"wd:Q928",txt:"Filipina"},{val:"wd:Q230",txt:"Georgia"},{val:"wd:Q668",txt:"India"},{val:"wd:Q252",txt:"Indonesia"},{val:"wd:Q796",txt:"Irak"},{val:"wd:Q794",txt:"Iran"},{val:"wd:Q801",txt:"Israel"},{val:"wd:Q17",txt:"Jepang"},{val:"wd:Q424",txt:"Kamboja"},{val:"wd:Q232",txt:"Kazakhstan"},{val:"wd:Q813",txt:"Kirgizstan"},{val:"wd:Q884",txt:"Korea Selatan"},{val:"wd:Q423",txt:"Korea Utara"},{val:"wd:Q817",txt:"Kuwait"},{val:"wd:Q819",txt:"Laos"},{val:"wd:Q822",txt:"Lebanon"},{val:"wd:Q826",txt:"Maladewa"},{val:"wd:Q833",txt:"Malaysia"},{val:"wd:Q711",txt:"Mongolia"},{val:"wd:Q836",txt:"Myanmar"},{val:"wd:Q837",txt:"Nepal"},{val:"wd:Q842",txt:"Oman"},{val:"wd:Q843",txt:"Pakistan"},{val:"wd:Q846",txt:"Qatar"},{val:"wd:Q334",txt:"Singapura"},{val:"wd:Q229",txt:"Siprus"},{val:"wd:Q854",txt:"Sri Lanka"},{val:"wd:Q858",txt:"Suriah"},{val:"wd:Q863",txt:"Tajikistan"},{val:"wd:Q869",txt:"Thailand"},{val:"wd:Q574",txt:"Timor Leste"},{val:"wd:Q148",txt:"Tiongkok"},{val:"wd:Q43",txt:"Turki"},{val:"wd:Q874",txt:"Turkmenistan"},{val:"wd:Q878",txt:"Uni Emirat Arab"},{val:"wd:Q265",txt:"Uzbekistan"},{val:"wd:Q881",txt:"Vietnam"},{val:"wd:Q805",txt:"Yaman"},{val:"wd:Q810",txt:"Yordania"}
+      ],
+      "Afrika": [
+        {val:"wd:Q258",txt:"Afrika Selatan"},{val:"wd:Q262",txt:"Aljazair"},{val:"wd:Q916",txt:"Angola"},{val:"wd:Q962",txt:"Benin"},{val:"wd:Q963",txt:"Botswana"},{val:"wd:Q965",txt:"Burkina Faso"},{val:"wd:Q967",txt:"Burundi"},{val:"wd:Q657",txt:"Chad"},{val:"wd:Q986",txt:"Eritrea"},{val:"wd:Q1050",txt:"Eswatini"},{val:"wd:Q115",txt:"Etiopia"},{val:"wd:Q1000",txt:"Gabon"},{val:"wd:Q1005",txt:"Gambia"},{val:"wd:Q117",txt:"Ghana"},{val:"wd:Q1006",txt:"Guinea"},{val:"wd:Q983",txt:"Guinea Khatulistiwa"},{val:"wd:Q1007",txt:"Guinea-Bissau"},{val:"wd:Q977",txt:"Jibuti"},{val:"wd:Q1009",txt:"Kamerun"},{val:"wd:Q114",txt:"Kenya"},{val:"wd:Q970",txt:"Komoro"},{val:"wd:Q1013",txt:"Lesotho"},{val:"wd:Q1014",txt:"Liberia"},{val:"wd:Q1016",txt:"Libya"},{val:"wd:Q1019",txt:"Madagaskar"},{val:"wd:Q1020",txt:"Malawi"},{val:"wd:Q912",txt:"Mali"},{val:"wd:Q1028",txt:"Maroko"},{val:"wd:Q1025",txt:"Mauritania"},{val:"wd:Q1027",txt:"Mauritius"},{val:"wd:Q79",txt:"Mesir"},{val:"wd:Q1029",txt:"Mozambik"},{val:"wd:Q1030",txt:"Namibia"},{val:"wd:Q1032",txt:"Niger"},{val:"wd:Q1033",txt:"Nigeria"},{val:"wd:Q1008",txt:"Pantai Gading"},{val:"wd:Q929",txt:"Republik Afrika Tengah"},{val:"wd:Q974",txt:"Republik Demokratik Kongo"},{val:"wd:Q971",txt:"Republik Kongo"},{val:"wd:Q1037",txt:"Rwanda"},{val:"wd:Q6250",txt:"Sahara Barat"},{val:"wd:Q1039",txt:"Sao Tome dan Principe"},{val:"wd:Q1041",txt:"Senegal"},{val:"wd:Q1042",txt:"Seychelles"},{val:"wd:Q1044",txt:"Sierra Leone"},{val:"wd:Q1045",txt:"Somalia"},{val:"wd:Q1049",txt:"Sudan"},{val:"wd:Q958",txt:"Sudan Selatan"},{val:"wd:Q1011",txt:"Tanjung Verde"},{val:"wd:Q924",txt:"Tanzania"},{val:"wd:Q945",txt:"Togo"},{val:"wd:Q948",txt:"Tunisia"},{val:"wd:Q1036",txt:"Uganda"},{val:"wd:Q953",txt:"Zambia"},{val:"wd:Q954",txt:"Zimbabwe"}
+      ],
+      "Amerika": [
+        {val:"wd:Q30",txt:"Amerika Serikat"},{val:"wd:Q781",txt:"Antigua dan Barbuda"},{val:"wd:Q778",txt:"Bahama"},{val:"wd:Q244",txt:"Barbados"},{val:"wd:Q242",txt:"Belize"},{val:"wd:Q784",txt:"Dominika"},{val:"wd:Q792",txt:"El Salvador"},{val:"wd:Q769",txt:"Grenada"},{val:"wd:Q774",txt:"Guatemala"},{val:"wd:Q790",txt:"Haiti"},{val:"wd:Q783",txt:"Honduras"},{val:"wd:Q766",txt:"Jamaika"},{val:"wd:Q16",txt:"Kanada"},{val:"wd:Q800",txt:"Kosta Rika"},{val:"wd:Q241",txt:"Kuba"},{val:"wd:Q96",txt:"Meksiko"},{val:"wd:Q811",txt:"Nikaragua"},{val:"wd:Q804",txt:"Panama"},{val:"wd:Q786",txt:"Republik Dominika"},{val:"wd:Q763",txt:"Saint Kitts dan Nevis"},{val:"wd:Q760",txt:"Saint Lucia"},{val:"wd:Q757",txt:"Saint Vincent dan Grenadines"},{val:"wd:Q754",txt:"Trinidad dan Tobago"},{val:"wd:Q414",txt:"Argentina"},{val:"wd:Q750",txt:"Bolivia"},{val:"wd:Q155",txt:"Brasil"},{val:"wd:Q298",txt:"Chili"},{val:"wd:Q736",txt:"Ekuador"},{val:"wd:Q734",txt:"Guyana"},{val:"wd:Q739",txt:"Kolombia"},{val:"wd:Q733",txt:"Paraguay"},{val:"wd:Q419",txt:"Peru"},{val:"wd:Q730",txt:"Suriname"},{val:"wd:Q77",txt:"Uruguay"},{val:"wd:Q717",txt:"Venezuela"}
+      ],
+      "Oseania": [
+        {val:"wd:Q408",txt:"Australia"},{val:"wd:Q712",txt:"Fiji"},{val:"wd:Q709",txt:"Kepulauan Marshall"},{val:"wd:Q685",txt:"Kepulauan Solomon"},{val:"wd:Q710",txt:"Kiribati"},{val:"wd:Q702",txt:"Mikronesia"},{val:"wd:Q697",txt:"Nauru"},{val:"wd:Q695",txt:"Palau"},{val:"wd:Q691",txt:"Papua Nugini"},{val:"wd:Q683",txt:"Samoa"},{val:"wd:Q664",txt:"Selandia Baru"},{val:"wd:Q678",txt:"Tonga"},{val:"wd:Q672",txt:"Tuvalu"},{val:"wd:Q686",txt:"Vanuatu"}
+      ]
+    };
+
+    function updateTipeWilayah() {
+      let tipe = document.getElementById('ui-tipe-wilayah').value;
+      document.getElementById('ui-wadah-indo').style.display = (tipe === 'indo') ? 'block' : 'none';
+      document.getElementById('ui-wadah-benua').style.display = (tipe === 'luar') ? 'block' : 'none';
+      document.getElementById('ui-wadah-negara').style.display = (tipe === 'luar') ? 'block' : 'none';
+      document.getElementById('ui-wadah-custom').style.display = (tipe === 'custom') ? 'block' : 'none';
+      
+      if (tipe === 'luar') updateNegara();
+      syncKeSistemInti();
+    }
+
+    function updateNegara() {
+      let benua = document.getElementById('ui-pilih-benua').value;
+      let selectNegara = document.getElementById('negara-input'); 
+      selectNegara.innerHTML = '';
+      dataNegara[benua].forEach(n => {
+        let opt = document.createElement('option');
+        opt.value = n.val; opt.text = n.txt;
+        selectNegara.appendChild(opt);
+      });
+      syncKeSistemInti();
+    }
+
+    function syncKeSistemInti() {
+      let tipe = document.getElementById('ui-tipe-wilayah').value;
+      let sistemProv = document.getElementById('provinsi-input');
+      sistemProv.innerHTML = ''; // Reset proxy
+      let opt = document.createElement('option');
+
+      if (tipe === 'indo') {
+        let uiIndo = document.getElementById('ui-pilih-indo');
+        opt.value = uiIndo.value;
+        opt.text = uiIndo.options[uiIndo.selectedIndex].text;
+      } else if (tipe === 'all') {
+        opt.value = 'all';
+        opt.text = 'Seluruh Indonesia';
+      } else if (tipe === 'luar') {
+        opt.value = 'luar_negeri';
+        opt.text = 'Luar Negeri';
+      } else if (tipe === 'custom') {
+        let uiCustom = document.getElementById('ui-input-custom').value;
+        opt.value = uiCustom || 'wd:';
+        opt.text = 'Wilayah Kustom';
+      }
+      
+      sistemProv.appendChild(opt);
+    }
+    window.addEventListener('DOMContentLoaded', updateTipeWilayah);
+  </script>
+
+  <div id="loading" class="panel-content" data-display="flex">
     <div class="loader"></div>
   </div>
+
   <section id="index" class="panel-content" data-display="flex">
-<header>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+    <header>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+        <div class="filter-box" style="grid-column: span 2; min-width: 0;">
+          <select id="filter-region" style="width: 100%;">
+            <option value="all">Semua Wilayah</option>
+          </select>
+        </div>
+        <div class="filter-box" style="grid-column: span 1; min-width: 0;">
+          <select id="filter-sort-kombinasi" class="filter-dropdown custom-dropdown-style">
+            <option value="default">Semua Usia</option>
+            <option value="filter-usia-muda-50">&lt; 50 Tahun</option>
+            <option value="filter-usia-50">&gt; 50 Tahun</option>
+            <option value="filter-usia-100">&gt; 100 Tahun</option>
+            <option value="filter-usia-200">&gt; 200 Tahun</option>
+            <option value="filter-usia-300">&gt; 300 Tahun</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="filter-features" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding-top: 15px;">
+        <button class="feat-btn disabled" id="btn-article" data-filter="article">Memiliki Artikel</button>
+        <button class="feat-btn disabled" id="btn-image" data-filter="image">Memiliki Gambar</button>
+        <button class="feat-btn disabled" id="btn-all" data-filter="all">Semua Hasil</button>
+      </div>
+    </header>
     
-    <div class="filter-box" style="grid-column: span 2; min-width: 0;">
-      <select id="filter-region" style="width: 100%;">
-        <option value="all">Semua Wilayah</option>
-      </select>
+    <input type="search" id="search-input" placeholder="Menghitung data..." autocomplete="off" />
+    <div id="index-container" style="background: #f3e9e9;overflow-y: auto; flex-grow: 1;">
+      <ol id="index-list"></ol>
     </div>
-
-    <div class="filter-box" style="grid-column: span 1; min-width: 0;">
-<select id="filter-sort-kombinasi" class="filter-dropdown custom-dropdown-style">
-  <option value="default">Semua Usia</option>
-  <option value="filter-usia-muda-50">&lt; 50 Tahun</option>
-  <option value="filter-usia-50">&gt; 50 Tahun</option>
-  <option value="filter-usia-100">&gt; 100 Tahun</option>
-  <option value="filter-usia-200">&gt; 200 Tahun</option>
-  <option value="filter-usia-300">&gt; 300 Tahun</option>
-</select>
-    </div>
-    
-  </div>
-
-  <div id="filter-features" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding-top: 15px;">
-    <button class="feat-btn disabled" id="btn-article" data-filter="article">Memiliki Artikel</button>
-    <button class="feat-btn disabled" id="btn-image" data-filter="image">Memiliki Gambar</button>
- <button class="feat-btn disabled" id="btn-all" data-filter="all">Semua Hasil</button>
-  </div>
-</header>
-    
-<input type="search" 
-       id="search-input" 
-       placeholder="Menghitung data..." 
-       autocomplete="off" />
-
-<div id="index-container" style="background: #f3e9e9;overflow-y: auto; flex-grow: 1;">
-  <ol id="index-list"></ol>
-</div>
   </section>
-  <section id="details" class="panel-content" data-display="block"><!-- dummy node --></section>
+
+  <section id="details" class="panel-content" data-display="block"></section>
+  
   <section id="kontrib" class="panel-content" data-display="block">
-    <p>
-Mari berkontribusi mendokumentasikan dan menghimpun sejarah masjid di Sumatera Barat (terutama masjid/surau tua) sebagai sumber pengetahuan 
-  dan warisan bagi generasi mendatang. 
-     Ensiklopedia ini bersifat kolaboratif. Ketersedian informasi bergantung pada kontribusi <i>dunsanak sadonyo</i>.</p>
-  <h4>Apa yang ingin Anda tambahkan hari ini?</h4>
-<div class="grid-kontrib">
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeHMSn6cwcgbZ0xx1CJ5tGXDQacYgzRZUG51STByKUROWXgmg/viewform" target="_blank" class="tombolkontrib">Informasi, data,<br/>dan sejarah</a>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7_u-7yCwDtXIkDO--bILry6mWGoRCnnfSumL_PEjfle0aLg/viewform" target="_blank" class="tombolkontrib">Foto terbaru/<br/>foto lama</a>
-  <a href="#" class="tombolkontrib">Masjid yang<br/>belum ada</a>
-</div>
- <p>Dengan mengklik link di atas, Anda akan diarahkan ke Google Form. Selanjutnya, kami akan memasukkan kontribusi Anda ke basis data Wikidata  
-   dengan tetap mencantumkan atribusi atau sumber dari Anda.</p>
-<p>Anda juga dapat melengkapi atau memperbaiki data secara langsung di Wikidata dengan cara klik pensil <span class="sunting-link" style="margin-left:0px;"></span> 
-  di detail masjid yang sedang dibuka. Panduan tersedia di sini.</p>
+    <p>Mari berkontribusi mendokumentasikan dan menghimpun data sejarah, arsitektur, dan ragam budaya sebagai sumber pengetahuan dan warisan bagi generasi mendatang. Ensiklopedia ini bersifat kolaboratif. Ketersedian informasi bergantung pada kontribusi bersama.</p>
+    <h4>Apa yang ingin Anda tambahkan hari ini?</h4>
+    <div class="grid-kontrib">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeHMSn6cwcgbZ0xx1CJ5tGXDQacYgzRZUG51STByKUROWXgmg/viewform" target="_blank" class="tombolkontrib">Informasi, data,<br/>dan sejarah</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7_u-7yCwDtXIkDO--bILry6mWGoRCnnfSumL_PEjfle0aLg/viewform" target="_blank" class="tombolkontrib">Foto terbaru/<br/>foto lama</a>
+      <a href="#" class="tombolkontrib">Entitas yang<br/>belum ada</a>
+    </div>
+    <p>Dengan mengklik link di atas, Anda akan diarahkan ke Google Form. Selanjutnya, kami akan memasukkan kontribusi Anda ke basis data Wikidata dengan tetap mencantumkan atribusi atau sumber dari Anda.</p>
+    <p>Anda juga dapat melengkapi atau memperbaiki data secara langsung di Wikidata dengan cara klik pensil <span class="sunting-link" style="margin-left:0px;"></span> di detail entitas yang sedang dibuka.</p>
   </section>
+
   <section id="about" class="panel-content" data-display="block">
-    <p>WikiSurau merupakan program pendokumentasian bangunan bersejarah berupa masjid dan surau tua di Sumatra Barat.
-    Keberadaan masjid dan surau tak terpisahkan dalam kehidupan masyarakat Minangkabau. Di Minangkabau, masjid 
-    merupakan syarat berdirinya suatu nagari (desa/kelurahan). Adapun surau merupakan tempat anak laki-laki
-      ditempa berbagai ilmu dan keterampilan, peninggalan pra-Islam dulunya.</p>
-    <img id="eph" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Portal_Mosque_icon.svg/60px-Portal_Mosque_icon.svg.png" alt="WikiSurau">
-    <p>Banyak masjid dan surau tua di Sumatra Barat telah ditetapkan sebagai cagar budaya. 
-      Namun, bangunannya dapat hancur dan rusak bila terjadi gempa bumi, yang sering melanda Sumatra Barat. 
-      Pada gempa bumi September 2009 lalu, sedikitnya 1.000 rumah ibadah (termasuk masjid dan surau tua) 
-      rusak berat dan hancur akibat bencana. </p>
-    <p>Aplikasi ini dikembangkan oleh Rahmat Irfan Denas dan masih dalam tahap pengerjaan. Untuk menuju kueri Wikidata, <a href="#" id="wdqs-link">silahkan lihat ini</a>.</p>
+    <p>WikiJelajah merupakan program inisiatif untuk mendokumentasikan bangunan bersejarah, kekayaan alam, dan ragam entitas budaya di berbagai wilayah secara spasial.</p>
+    <img id="eph" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Portal_Mosque_icon.svg/60px-Portal_Mosque_icon.svg.png" alt="WikiJelajah">
+    <p>Banyak peninggalan bersejarah dan cagar budaya yang terancam rusak atau hilang tanpa dokumentasi yang memadai, terlebih akibat bencana alam maupun modernisasi perkotaan yang tidak tertata. Pendataan yang kuat adalah langkah awal pelestarian.</p>
+    <p>Aplikasi ini dikembangkan oleh Rahmat Irfan Denas dan ditenagai sepenuhnya oleh data terbuka dari komunitas Wikidata. Untuk menuju kueri Wikidata, <a href="#" id="wdqs-link">silahkan lihat ini</a>.</p>
   </section>
-  </section>
+</section>
+
 <nav id="navigasi-utama">
-    <ul id="nav-standar" style="display: flex; list-style: none; margin: 12px 0; padding: 0;">
-      
-      <li class="nav-tab" style="flex: 1; text-align: left;">
-        <a href="#" style="text-decoration: none;">Beranda</a>
-      </li>
-
-      <li class="nav-tab" style="flex: 1; text-align: center;">
-        <a href="#hasil" style="text-decoration: none;">Hasil</a>
-      </li>
-
-      <li class="nav-tab" style="flex: 1; text-align: right; position: relative;">
-        <a id="btn-menu-induk" style="cursor: pointer; text-decoration: none;">Lainnya</a>
-        
-        <ul id="submenu-atas" class="kelas-submenu-mu" style="display: flex; min-width: 100%; position: absolute; bottom: 36px; right: 0; margin: 0px; list-style: none; flex-direction: column; z-index: 999;">
-          <li><a href="#about" style="text-decoration: none; display: block;">Tentang</a></li>
-          <li><a href="#tutorial" style="text-decoration: none; display: block;">Tutorial</a></li>
-          <li><a href="#medsos" style="text-decoration: none; display: block;">Media Sosial</a></li>
-          <li><a href="#kegiatan" style="text-decoration: none; display: block;">Kegiatan</a></li>
-        </ul>
-      </li>
-
-    </ul>
-
-    <ul id="nav-detail" style="display: none; list-style: none; margin: 12px 0; padding: 0;">
-      <li style="flex: 1; text-align: left;"><a id="btn-prev" style="cursor: pointer; text-decoration: none; font-weight: bold;">Sebelumnya</a></li>
-      <li style="flex: 1; text-align: center;"><a href="#hasil">Hasil</a></li>
-      <li style="flex: 1; text-align: right;"><a id="btn-next" style="cursor: pointer; text-decoration: none; font-weight: bold;">Selanjutnya</a></li>
-    </ul>
+  <ul id="nav-standar" style="display: flex; list-style: none; margin: 12px 0; padding: 0;">
+    <li class="nav-tab" style="flex: 1; text-align: left;"><a href="#" style="text-decoration: none;">Beranda</a></li>
+    <li class="nav-tab" style="flex: 1; text-align: center;"><a href="#hasil" style="text-decoration: none;">Hasil</a></li>
+    <li class="nav-tab" style="flex: 1; text-align: right; position: relative;">
+      <button id="btn-menu-induk" style="cursor: pointer; background:none; border:none; color:inherit; font:inherit; text-decoration: none;">Lainnya</button>
+      <ul id="submenu-atas" class="kelas-submenu-mu" style="display: flex; min-width: 100%; position: absolute; bottom: 36px; right: 0; margin: 0px; list-style: none; flex-direction: column; z-index: 999;">
+        <li><a href="#about" style="text-decoration: none; display: block;">Tentang</a></li>
+        <li><a href="#tutorial" style="text-decoration: none; display: block;">Tutorial</a></li>
+        <li><a href="#medsos" style="text-decoration: none; display: block;">Media Sosial</a></li>
+        <li><a href="#kegiatan" style="text-decoration: none; display: block;">Kegiatan</a></li>
+      </ul>
+    </li>
+  </ul>
+  <ul id="nav-detail" style="display: none; list-style: none; margin: 12px 0; padding: 0;">
+    <li style="flex: 1; text-align: left;"><a id="btn-prev" style="cursor: pointer; text-decoration: none; font-weight: bold;">Sebelumnya</a></li>
+    <li style="flex: 1; text-align: center;"><a href="#hasil">Hasil</a></li>
+    <li style="flex: 1; text-align: right;"><a id="btn-next" style="cursor: pointer; text-decoration: none; font-weight: bold;">Selanjutnya</a></li>
+  </ul>
 </nav>
+
 <section id="map"></section>
-  <div id="eph-dialog-overlay">
+
+<div id="eph-dialog-overlay">
   <div class="eph-dialog-box">
     <h3 id="eph-dialog-title">Peringatan</h3>
     <p id="eph-dialog-msg">Pesan di sini</p>
@@ -522,8 +391,9 @@ Mari berkontribusi mendokumentasikan dan menghimpun sejarah masjid di Sumatera B
     </div>
   </div>
 </div>
+
 <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 <script src="js/osmtogeojson.js"></script>
 <script src="js/load-jsonp.js"></script>
